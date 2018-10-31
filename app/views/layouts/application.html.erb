@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Golf Buddy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:700" rel="stylesheet">
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA_21qVdgOUTyjULhAdXOiNQCZM-i2tdnQ"></script>
+  <script>
+    let map;
+
+    function initialize() {
+      let center = new google.maps.LatLng(42.3142647,-71.1103699);
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: center,
+        zoom: 13
+      });
+      let input = document.getElementById('autocomplete');
+      let autocomplete = new google.maps.places.Autocomplete(input, {types: ['(cities)']});
+      google.maps.event.addListener(autocomplete, 'place_changed', function(){
+        let place = autocomplete.getPlace();
+      })
+
+      let request = {
+        location: center,
+        radius: 8047,
+        query: ['cafe']
+      };
+
+      let service = new google.maps.places.PlacesService(map);
+      service.nearbySearch(request, callback);
+    }
+
+    function callback(results, status) {
+      if(status == google.maps.places.PlacesServiceStatus.OK){
+        for (let i = 0; i<results.length; i++){
+          createMarker(results[i]);
+        }
+      }
+    }
+
+    function createMarker(place) {
+      let placeLoc = place.geometry.location;
+      let marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
+      });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+
+    <%= javascript_include_tag "vendor/modernizr" %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <nav class="top-bar">
+    <section id='sign' class="top-bar-section">
+      <ul>
+        <%- if current_user -%>
+          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        <%- else -%>
+          <li id='sign-up'><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li id='sign-up'><%= link_to 'Sign In', new_user_session_path %></li>
+        <%- end -%>
+      </ul>
+    </section>
+  </nav>
+
+  <%- flash.each do |key, value| -%>
+    <div class="flash flash-<%= key %>">
+      <%= value %>
+    </div>
+  <%- end -%>
+
+  <%= yield %>
+
+  <%= javascript_include_tag 'application' %>
+
+  <%- if Rails.env.development? || Rails.env.test? -%>
+    <%= javascript_tag do %>
+      window.railsEnv = '<%= Rails.env %>'
+    <%- end -%>
+  <%- end -%>
+  <%= javascript_pack_tag 'application' %>
+
+  <%= yield :extra_footer %>
+</body>
+</html>

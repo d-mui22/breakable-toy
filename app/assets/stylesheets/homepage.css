@@ -1,0 +1,52 @@
+.header-title {
+  border: 2px solid red;
+  border-radius: 50%;
+}
+
+
+.index-title {
+  color: white;
+  text-shadow: 2px 5px 1px white, 10px 5px 20px white, 0 0 500px white;
+  font-size: 5em;
+  font-family: 'Merriweather', serif;
+  background: -webkit-linear-gradient(blue, blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin:2% 0 0 15%;
+}
+
+/* .index-header-img {
+  background-image: url('golfpics/header3.jpg');
+  background-position: bottom;
+  padding: 1em;
+  background-repeat: no-repeat;
+  height: 35%;
+  background-size: cover;
+
+} */
+
+.hero-section {
+  background: url("golfpics/header3.jpg") 50% no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  height: 35vh;
+
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: left;
+      -ms-flex-align: left;
+          align-items: left;
+  -webkit-justify-content: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+.mapsearchbar-label {
+  margin: 0;
+  padding: 0;
+}
+
+.mapsearchbar {
+  border: 2px solid black;
+}
