@@ -22,35 +22,13 @@ class ScorecardShowContainer extends Component {
     this.setState({strokes: event.target.value})
   }
 
-  handleHoleSubmit(event) {
-    event.preventDefault()
-    let hole = {
-      yard: this.state.yard,
-      par: this.state.par
-    }
-  }
-
-  onSubmit() {
-
-  }
-
-  inputKeyUp(event) {
-    debugger
-    event.which = event.which || e.keyCode;
-    if(event.which == 13){
-      this.setState({yard: event.target.value})
-    }
-  }
-
   render() {
     return(
       <div>
         <ScorecardShow
-          addHoles={this.addHoles}
           handleYardsChange={this.handleYardsChange}
           handleParChange={this.handleParChange}
           handleStrokesChange={this.handleStrokesChange}
-          inputKeyUp={this.inputKeyUp}
         />
       </div>
     )

@@ -88,7 +88,7 @@
         name: place.name
       };
       let infowindow = new google.maps.InfoWindow({
-        content: (place.address + '<h6>' + place.name +'</h6>' + "Rating: " + place.rating + " Stars<br/><br/>"+ '<button data-course-name="' + payLoad.name + '" onClick="addCourse(event)">Add Course</button>')
+        content: ('<h6>' + place.name +'</h6>' + "Rating: " + place.rating + " Stars<br/><br/>"+ '<button data-course-name="' + payLoad.name + '" onClick="addCourse(event)">Add Course</button>')
       })
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.open(map, marker);

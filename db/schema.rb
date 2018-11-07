@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2018_11_01_182011) do
   create_table "holes", force: :cascade do |t|
     t.string "yards", null: false
     t.string "par", null: false
-    t.string "hole", null: false
+    t.integer "hole", null: false
     t.bigint "golf_course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

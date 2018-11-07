@@ -9,6 +9,7 @@ class GolfCourseShow extends Component {
     }
     this.handleHoleClick = this.handleHoleClick.bind(this)
     this.handleHolesSubmit = this.handleHolesSubmit.bind(this)
+    this.addHole = this.addHole.bind(this)
   }
 
   componentDidMount() {
@@ -22,41 +23,32 @@ class GolfCourseShow extends Component {
     }
   }
 
-  handleHolesSubmit(event) {
-    event.preventDefault()
-
-    let endPoints =
-    [`/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`,
-      `/api/v1/golf_courses/${this.props.id}/holes`]
-    let promises = endPoints.map((endPoint) => {
-      return fetch(endPoint)
-    })
-debugger
-    Promise.all(promises).then((responses) => {
-      let parsedResponses = responses.map((response) => {
-        debugger
-        return response.json();
-      })
-      return Promise.all(parsedResponses)
-      debugger
+  addHole(payLoad) {
+    fetch(`/api/v1/golf_courses/${this.props.id}/holes`, {
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify(payLoad),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
     })
   }
+
+  handleHolesSubmit(event) {
+    event.preventDefault()
+    for(let x = 1; x<=18; x++) {
+      let hole = {
+        yards: document.getElementById(`yards-${x}`).value,
+        par: document.getElementById(`par-${x}`).value,
+        hole: document.getElementById(`${x}`).id,
+        golf_course_id: this.props.id
+      }
+      this.addHole(hole)
+    }
+  }
+
 
   render() {
     let holesForm;
@@ -73,13 +65,43 @@ debugger
       <div>
         <h1>{this.props.name}</h1>
         <br/>
-        <button onClick={this.props.handleScorecardSubmit}>Add Scorecard to {this.props.name}</button>
-        <br/>
         <button onClick={this.handleHoleClick}>Add Holes to {this.props.name}</button>
         {holesForm}
+        <br/>
+        <a href='/golf_courses/1/holes'>Scorecard</a>
       </div>
     )
   }
 }
 
 export default GolfCourseShow;
+
+// let endPoints =
+// [`/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`,
+//   `/api/v1/golf_courses/${this.props.id}/holes`]
+//   let promises = endPoints.map((endPoint) => {
+//     return fetch(endPoint)
+//   })
+//   Promise.all(promises).then((responses) => {
+//     let parsedResponses = responses.map((response) => {
+//       return response.json();
+//     })
+//     return Promise.all(parsedResponses)
+//   })
+// }

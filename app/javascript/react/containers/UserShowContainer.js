@@ -6,12 +6,13 @@ class UserShowContainer extends Component {
     this.state = {
     }
   }
-
+  componentDidMount() {
+  }
   render() {
     return(
-     <div>
-
-        <h1>UserShow</h1>
+      <div>
+        <button onClick={this.props.handleScorecardSubmit}>Add Scorecard to {this.props.name}</button>
+        <br/>
       </div>
     )
   }

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :golf_courses, only: [:index, :show] do
-    resources :holes, only: [:index, :show]
+    resources :holes, only: [:index, :show, :create]
   end
 
   namespace :api do
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
         resources :scorecards, only: [:index, :show]
         resources :holes, only: [:index, :show]
       end
-      resources :golf_courses, only: [:show, :create] do
+      resources :golf_courses, only: [:index, :show, :create] do
         resources :scorecards, only: [:index, :show, :create]
         resources :holes, only: [:show, :index, :create]
       end

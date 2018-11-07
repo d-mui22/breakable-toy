@@ -25,6 +25,7 @@ class GolfCoursesShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      debugger
       this.setState({
         new_courses: [body.golf_course]
       });
@@ -63,7 +64,6 @@ class GolfCoursesShowContainer extends Component {
 
   handleScorecardSubmit(event) {
     event.preventDefault()
-    debugger
     let scorecard = {
       user_id: 1,
       golf_course_id: this.props.params.id

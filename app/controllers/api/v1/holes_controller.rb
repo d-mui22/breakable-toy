@@ -1,7 +1,8 @@
 class Api::V1::HolesController < ApplicationController
 
   def index
-    render json: Hole.all
+    @holes = Hole.all
+    render json: @holes
   end
 
   def show
@@ -19,6 +20,6 @@ class Api::V1::HolesController < ApplicationController
   end
 
   def hole_params
-    params.require(:hole).permit(:yards, :par, :hole)
+    params.permit(:yards, :par, :hole, :golf_course_id, :created_at)
   end
 end

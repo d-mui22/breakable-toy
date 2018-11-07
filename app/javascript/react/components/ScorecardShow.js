@@ -11,99 +11,99 @@ const ScorecardShow = (props) => {
   return(
     <div>
       <h1 className="scorecard-title">Scorecard</h1>
-      <form id="form-sc" className="form-vertical" method="post">
-      <table className='table-scroll'>
-        <thead>
-          <tr className="scorecard-holes">
-            <th className="scorecard-label">Hole</th>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            <th>7</th>
-            <th>8</th>
-            <th>9</th>
-            <th>10</th>
-            <th>11</th>
-            <th>12</th>
-            <th>13</th>
-            <th>14</th>
-            <th>15</th>
-            <th>16</th>
-            <th>17</th>
-            <th>18</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="scorecard-yards">
-            <td className="scorecard-label">Yards</td>
-            <td><input id='yard-1' onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-            <td><input onChange={props.handleYardsChange} size='4'/></td>
-          </tr>
-          <tr className="scorecard-par">
-            <td className="scorecard-label">Par</td>
-            <td><input id='par-1' onChange={props.handleParChange} size='3'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-            <td><input onChange={props.handleParChange} size='4'/></td>
-          </tr>
-          <tr>
-            <td className="scorecard-label">Strokes</td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            <td><input onChange={props.handleStrokesChange} size='4'/></td>
-          </tr>
-        </tbody>
-      </table>
-      <button className="scorecard-submit" onClick={props.handleHolesSubmit}>Submit Scorecard</button>
-    </form>
+      <form method="post">
+        <table className='table-scroll'>
+          <thead>
+            <tr className="scorecard-holes">
+              <th className="scorecard-label">Hole</th>
+              <th id='1'>1</th>
+              <th id='2'>2</th>
+              <th id='3'>3</th>
+              <th id='4'>4</th>
+              <th id='5'>5</th>
+              <th id='6'>6</th>
+              <th id='7'>7</th>
+              <th id='8'>8</th>
+              <th id='9'>9</th>
+              <th id='10'>10</th>
+              <th id='11'>11</th>
+              <th id='12'>12</th>
+              <th id='13'>13</th>
+              <th id='14'>14</th>
+              <th id='15'>15</th>
+              <th id='16'>16</th>
+              <th id='17'>17</th>
+              <th id='18'>18</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="scorecard-yards">
+              <td className="scorecard-label">Yards</td>
+              <td><input id='yards-1'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-2'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-3'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-4'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-5'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-6'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-7'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-8'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-9'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-10'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-11'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-12'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-13'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-14'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-15'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-16'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-17'onChange={props.handleYardsChange} size='4'/></td>
+              <td><input id='yards-18'onChange={props.handleYardsChange} size='4'/></td>
+            </tr>
+            <tr className="scorecard-par">
+              <td className="scorecard-label">Par</td>
+              <td><input id='par-1' onChange={props.handleParChange} size='3'/></td>
+              <td><input id='par-2' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-3' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-4' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-5' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-6' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-7' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-8' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-9' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-10' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-11' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-12' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-13' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-14' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-15' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-16' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-17' onChange={props.handleParChange} size='4'/></td>
+              <td><input id='par-18' onChange={props.handleParChange} size='4'/></td>
+            </tr>
+            <tr>
+              <td className="scorecard-label">Strokes</td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+              <td><input onChange={props.handleStrokesChange} size='4'/></td>
+            </tr>
+          </tbody>
+        </table>
+        <button className="scorecard-submit" onClick={props.handleHolesSubmit}>Submit Scorecard</button>
+      </form>
     </div>
   )
 }
