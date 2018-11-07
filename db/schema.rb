@@ -10,27 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_31_034128) do
+ActiveRecord::Schema.define(version: 2018_11_01_182011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "golfers", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "handicap"
+  create_table "golf_courses", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "scorecards", force: :cascade do |t|
-    t.bigint "golfcourse_id", null: false
-    t.bigint "golfer_id", null: false
-    t.string "strokes", null: false
+  create_table "holes", force: :cascade do |t|
+    t.string "yards", null: false
+    t.string "par", null: false
+    t.string "hole", null: false
+    t.bigint "golf_course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["golfcourse_id"], name: "index_scorecards_on_golfcourse_id"
-    t.index ["golfer_id"], name: "index_scorecards_on_golfer_id"
+    t.index ["golf_course_id"], name: "index_holes_on_golf_course_id"
+  end
+
+  create_table "scorecards", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "golf_course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["golf_course_id"], name: "index_scorecards_on_golf_course_id"
+    t.index ["user_id"], name: "index_scorecards_on_user_id"
+  end
+
+  create_table "strokes", force: :cascade do |t|
+    t.bigint "scorecard_id", null: false
+    t.bigint "hole_id", null: false
+    t.string "strokes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hole_id"], name: "index_strokes_on_hole_id"
+    t.index ["scorecard_id"], name: "index_strokes_on_scorecard_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,6 +58,10 @@ ActiveRecord::Schema.define(version: 2018_10_31_034128) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role", default: "member", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "handicap"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

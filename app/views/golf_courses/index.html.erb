@@ -2,7 +2,17 @@
     <h1 class="index-title">Golf Buddy</h1>
 </div>
 <p class='mapsearchbar-label'>Please enter a location</p>
-<input class='mapsearchbar' id="autocomplete" type="text" size="10">
+<input class='mapsearchbar' id="search" type="text" size="10">
 <div id="map">
   LOADING
 </div>
+
+
+<% if(@golfcourse != []) %>
+<h1><%= 'Please select a Golf Course' %></h1>
+<% end %>
+<ol>
+<% @golfcourses.each do |course| %>
+<li><h3> <%= link_to course.name, golf_course_path(course) %></h3></li>
+<% end %>
+</ol>

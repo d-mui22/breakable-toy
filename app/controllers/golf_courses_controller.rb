@@ -3,4 +3,7 @@ class GolfCoursesController < ApplicationController
     @golfcourses = GolfCourse.all
   end
 
+  def show
+    @golfcourse = GolfCourse.find(params[:id])
+  end
 end

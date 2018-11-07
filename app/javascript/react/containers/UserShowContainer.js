@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class GolferShowContainer extends Component {
+class UserShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,12 +11,10 @@ class GolferShowContainer extends Component {
     return(
      <div>
 
-        <h1>GolferShow</h1>
-        <div id='map'>
-        </div>
+        <h1>UserShow</h1>
       </div>
     )
   }
 }
 
-export default GolferShowContainer;
+export default UserShowContainer;
