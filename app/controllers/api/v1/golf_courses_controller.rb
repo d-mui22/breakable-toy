@@ -11,9 +11,11 @@ class Api::V1::GolfCoursesController < ApplicationController
 
   def create
     @golf_course = GolfCourse.new(golf_course_params)
+    golf_id = @golf_course.id
     if @golf_course.save
       flash[:notice] = 'Golf Course Added!'
     end
+    render json: @golf_course
   end
 
 

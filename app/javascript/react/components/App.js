@@ -14,6 +14,7 @@ export const App = (props) => {
         <Route path='/users/:user_id/golf_courses/:id/scorecards/:id' component={ScorecardShowContainer}/>
         <Route path="/golf_courses/:id" component={GolfCoursesShowContainer}/>
         <Route path="/golf_courses/:id/holes" component={CompleteScorecardShowContainer}/>
+        <Route path="/users/:id/golf_courses/:id" component={ScorecardShowContainer}/>
       </Router>
     </div>
   )
