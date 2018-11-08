@@ -1,9 +1,7 @@
 class GolfCourseSerializer < ActiveModel::Serializer
-  attributes :id, :name, :sorted_holes
+  attributes :id, :name, :holes
 
-  has_many :holes
-
-  def sorted_holes
+  def holes
     object.holes.sort_by(&:hole)
   end
 end

@@ -35,7 +35,7 @@ class CompleteScorecardShowContainer extends Component {
     let yards;
     let par;
     if (this.state.golf_course != undefined){
-      holes = this.state.golf_course.sorted_holes.map(hole => {
+      holes = this.state.golf_course.holes.map(hole => {
         return(
           <CompleteScorecardHoleShow
           key={hole.id}
@@ -43,7 +43,7 @@ class CompleteScorecardShowContainer extends Component {
           />
         )
       })
-      yards = this.state.golf_course.sorted_holes.map(hole => {
+      yards = this.state.golf_course.holes.map(hole => {
         return(
           <CompleteScorecardYardsShow
           key={hole.id}
@@ -51,7 +51,7 @@ class CompleteScorecardShowContainer extends Component {
           />
         )
       })
-      par = this.state.golf_course.sorted_holes.map(hole => {
+      par = this.state.golf_course.holes.map(hole => {
         return(
           <CompleteScorecardParShow
           key={hole.id}
