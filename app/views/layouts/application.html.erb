@@ -4,26 +4,66 @@
   <title>Golf Buddy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <link href="https://fonts.googleapis.com/css?family=Merriweather:700" rel="stylesheet">
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA_21qVdgOUTyjULhAdXOiNQCZM-i2tdnQ"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBm8YN3HD2PoaY-acpIgId8QHZse0sSZGs"></script>
   <script>
+
     let map;
+    function addCourse(event) {
+      event.preventDefault();
+      const courseName = event.currentTarget.attributes["data-course-name"].value
+      fetch('/api/v1/golf_courses', {
+        credentials: 'same-origin',
+        method: 'post',
+        body: JSON.stringify({name: courseName}),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      })
+      .then(response => {
+        if(response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+    }
 
     function initialize() {
-      let center = new google.maps.LatLng(42.3142647,-71.1103699);
+      let place;
+      let center = new google.maps.LatLng(42.3540243,-71.0610617);
       map = new google.maps.Map(document.getElementById('map'), {
         center: center,
-        zoom: 13
+        zoom: 12
       });
-      let input = document.getElementById('autocomplete');
-      let autocomplete = new google.maps.places.Autocomplete(input, {types: ['(cities)']});
+      let input = document.getElementById('search');
+      let autocomplete = new google.maps.places.Autocomplete(input);
+      autocomplete.bindTo('bounds', map)
       google.maps.event.addListener(autocomplete, 'place_changed', function(){
-        let place = autocomplete.getPlace();
+        place = autocomplete.getPlace();
+        if (!place.geometry){
+          return;
+        }
+        if (place.geometry.viewport) {
+          map.fitBounds(place.geometry.viewport);
+        } else {
+          map.setCenter(place.geometry.location);
+          map.setZoom(12);
+        }
+        marker.setPlace( ({
+          placeId: place.place_id,
+          location: place.geometry.location
+        }));
       })
 
       let request = {
         location: center,
-        radius: 8047,
-        query: ['cafe']
+        radius: 50000,
+        types: ['establishment'],
+        keyword: ['golf course']
       };
 
       let service = new google.maps.places.PlacesService(map);
@@ -42,12 +82,16 @@
       let placeLoc = place.geometry.location;
       let marker = new google.maps.Marker({
         map: map,
-        position: place.geometry.location
+        position: placeLoc
       });
-
+      let payLoad = {
+        name: place.name
+      };
+      let infowindow = new google.maps.InfoWindow({
+        content: ('<h6>' + place.name +'</h6>' + "Rating: " + place.rating + " Stars<br/><br/>"+ '<button data-course-name="' + payLoad.name + '" onClick="addCourse(event)">Add Course</button>')
+      })
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name);
-        infowindow.open(map, this);
+        infowindow.open(map, marker);
       });
     }
     google.maps.event.addDomListener(window, 'load', initialize);
@@ -61,13 +105,15 @@
 <body>
 
   <nav class="top-bar">
-    <section id='sign' class="top-bar-section">
-      <ul>
+    <section id='sign' class="top-bar-section top-bar-right">
+      <ul class="right">
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
-          <li id='sign-up'><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <div class='sign-up-buttons'>
+          <li id='sign-up'><%= link_to 'Sign Up', new_user_registration_path, :class=>'sign-up' %></li>
           <li id='sign-up'><%= link_to 'Sign In', new_user_session_path %></li>
+          </div>
         <%- end -%>
       </ul>
     </section>
@@ -78,7 +124,6 @@
       <%= value %>
     </div>
   <%- end -%>
-
   <%= yield %>
 
   <%= javascript_include_tag 'application' %>

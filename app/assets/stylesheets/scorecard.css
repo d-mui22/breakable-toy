@@ -1,0 +1,23 @@
+.scorecard-holes {
+  background-color: green;
+  color: #fff;
+}
+
+.scorecard-yards {
+  background-color: gold;
+}
+
+.scorecard-label {
+  font-weight: bold;
+}
+
+.scorecard-title {
+  text-align: center;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 1px;
+}

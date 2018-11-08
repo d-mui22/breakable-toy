@@ -1,13 +1,19 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import { Route, IndexRoute, Router, browserHistory } from 'react-router'
-import GolferShowContainer from '../containers/GolferShowContainer'
+import UserShowContainer from '../containers/UserShowContainer'
+import ScorecardShowContainer from '../containers/ScorecardShowContainer'
+import GolfCoursesShowContainer from '../containers/GolfCoursesShowContainer'
+import CompleteScorecardShowContainer from '../containers/CompleteScorecardShowContainer'
 
 export const App = (props) => {
   return (
     <div>
       <Router history={browserHistory}>
-        <Route path="/golfers/:id" component={GolferShowContainer}/>
+        <Route path="/users/:id" component={UserShowContainer}/>
+        <Route path='/users/:user_id/golf_courses/:id/scorecards/:id' component={ScorecardShowContainer}/>
+        <Route path="/golf_courses/:id" component={GolfCoursesShowContainer}/>
+        <Route path="/golf_courses/:id/holes" component={CompleteScorecardShowContainer}/>
       </Router>
     </div>
   )

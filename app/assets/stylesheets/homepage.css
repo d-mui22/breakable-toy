@@ -3,27 +3,31 @@
   border-radius: 50%;
 }
 
+#map {
+  height: 50%;
+  width: 75%;
+  border: 2px solid blue;
+  margin-left: 13%;
+}
+
+#sign #sign-up a {
+  color: red;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+  border-radius: 80%;
+  margin-right: 2px;
+}
 
 .index-title {
-  color: white;
-  text-shadow: 2px 5px 1px white, 10px 5px 20px white, 0 0 500px white;
+  color: #fff;
+  text-shadow: 2px 5px 1px yellow, 10px 5px 20px #fff, 0 0 500px #fff;
   font-size: 5em;
   font-family: 'Merriweather', serif;
-  background: -webkit-linear-gradient(blue, blue);
+  background: -webkit-linear-gradient(red, red);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin:2% 0 0 15%;
 }
-
-/* .index-header-img {
-  background-image: url('golfpics/header3.jpg');
-  background-position: bottom;
-  padding: 1em;
-  background-repeat: no-repeat;
-  height: 35%;
-  background-size: cover;
-
-} */
 
 .hero-section {
   background: url("golfpics/header3.jpg") 50% no-repeat;

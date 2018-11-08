@@ -15,22 +15,3 @@
  *= require foundation_and_overrides
 
  */
-
-#map {
-  height: 50%; 
-  border: 2px solid blue;
-}
-
-#sign #sign-up a {
-  color: red;
-  border: 1px solid black;
-  border-radius: 40%;
-}
-
-nav.top-bar {
-text-align:right;
-}
-
-section.top-bar-section {
-display: inline-block;
-}
