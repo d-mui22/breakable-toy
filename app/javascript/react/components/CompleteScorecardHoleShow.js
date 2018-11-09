@@ -1,8 +1,9 @@
 import React from 'react'
 
 const CompleteScorecardHoleShow = (props) => {
+  let counterClass = `hole-${props.counter}`
   return(
-      <th>{props.hole}</th>
+      <th id={counterClass}>{props.hole}</th>
   )
 }
 

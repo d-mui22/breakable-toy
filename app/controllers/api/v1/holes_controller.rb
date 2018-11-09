@@ -14,10 +14,12 @@ class Api::V1::HolesController < ApplicationController
   def create
     @hole = Hole.new(hole_params)
     if @hole.save
-      flash[:notice] = 'Woot'
+      flash[:notice] = 'Holes Created'
       redirect_to golf_courses_path
     end
   end
+
+  private
 
   def hole_params
     params.permit(:yards, :par, :hole, :golf_course_id, :created_at)

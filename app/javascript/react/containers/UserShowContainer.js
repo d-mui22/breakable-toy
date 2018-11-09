@@ -10,10 +10,7 @@ class UserShowContainer extends Component {
   }
   render() {
     return(
-      <div>
-        <button onClick={this.props.handleScorecardSubmit}>Add Scorecard to {this.props.name}</button>
-        <br/>
-      </div>
+      <h1>User Profile Page</h1>
     )
   }
 }
