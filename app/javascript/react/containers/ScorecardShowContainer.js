@@ -11,8 +11,7 @@ class ScorecardShowContainer extends Component {
   render() {
     return(
       <div>
-        <ScorecardShow
-        />
+        
       </div>
     )
   }

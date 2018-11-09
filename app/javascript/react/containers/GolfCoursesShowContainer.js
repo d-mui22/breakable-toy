@@ -8,8 +8,6 @@ class GolfCoursesShowContainer extends Component {
       new_courses: [],
       error: ''
     }
-    this.addScorecard = this.addScorecard.bind(this)
-    this.handleScorecardSubmit = this.handleScorecardSubmit.bind(this)
   }
 
   componentDidMount(){
@@ -25,7 +23,6 @@ class GolfCoursesShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({
         new_courses: [body.golf_course]
       });
@@ -49,27 +46,6 @@ class GolfCoursesShowContainer extends Component {
       this.setState({})
     })
   }
-  addScorecard(payLoad) {
-    fetch(`/api/v1/golf_courses/${this.props.params.id}/scorecards`, {
-      credentials: 'same-origin',
-      method: 'POST',
-      body: JSON.stringify(payLoad),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    })
-  }
-
-  handleScorecardSubmit(event) {
-    event.preventDefault()
-    let scorecard = {
-      user_id: 1,
-      golf_course_id: this.props.params.id
-    }
-    this.addScorecard(scorecard)
-  }
 
   render() {
     let courses = this.state.new_courses.map(course => {
@@ -78,7 +54,6 @@ class GolfCoursesShowContainer extends Component {
           key={course.id}
           id={course.id}
           name={course.name}
-          handleScorecardSubmit={this.handleScorecardSubmit}
         />
       )
     })

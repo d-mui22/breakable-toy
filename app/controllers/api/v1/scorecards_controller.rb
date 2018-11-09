@@ -5,9 +5,8 @@ class Api::V1::ScorecardsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @scorecards = @user.scorecards
-    render json: @scorecards
+    @scorecard = Scorecard.find(params[:id])
+    render json: @scorecard
   end
 
   def create

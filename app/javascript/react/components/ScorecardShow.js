@@ -79,27 +79,6 @@ const ScorecardShow = (props) => {
               <td><input id='par-17' onChange={props.handleParChange} size='4'/></td>
               <td><input id='par-18' onChange={props.handleParChange} size='4'/></td>
             </tr>
-            <tr>
-              <td className="scorecard-label">Strokes</td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-              <td><input onChange={props.handleStrokesChange} size='4'/></td>
-            </tr>
           </tbody>
         </table>
         <button className="scorecard-submit" onClick={props.handleHolesSubmit}>Submit Scorecard</button>

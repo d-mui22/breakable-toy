@@ -1,8 +1,9 @@
 import React from 'react'
 
 const CompleteScorecardYardsShow = (props) => {
+  let counterClass = `yards-${props.counter}`
   return(
-      <td>{props.yards}</td>
+      <td id={counterClass}>{props.yards}</td>
   )
 }
 
