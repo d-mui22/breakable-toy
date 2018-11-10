@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_01_182011) do
+ActiveRecord::Schema.define(version: 2018_11_10_033644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2018_11_01_182011) do
     t.string "strokes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["hole_id"], name: "index_strokes_on_hole_id"
     t.index ["scorecard_id"], name: "index_strokes_on_scorecard_id"
   end

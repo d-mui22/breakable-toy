@@ -5,5 +5,5 @@ class Scorecard < ApplicationRecord
   belongs_to :user
   belongs_to :golf_course
   has_many :strokes
-  # has_many :holes, through: :golf_course
+  has_many :holes, through: :strokes
 end

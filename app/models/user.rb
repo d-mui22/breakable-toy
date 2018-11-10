@@ -8,6 +8,7 @@ class User < ApplicationRecord
    validates :last_name, presence: true
 
    has_many :scorecards
+   has_many :strokes, through: :scorecards
    has_many :golf_courses, through: :scorecards
 
 end

@@ -42,9 +42,10 @@ class CompleteScorecardShowContainer extends Component {
   }
 
   addScores(payLoad) {
+    debugger
     fetch(`/api/v1/users/${this.props.params.user_id}/golf_courses/${this.props.params.id[0]}/scorecards/${this.props.params.id[1]}/strokes`, {
       credentials: 'same-origin',
-      method: 'POST',
+      method: 'post',
       body: JSON.stringify(payLoad),
       headers: {
         'Accept': 'application/json',
@@ -68,9 +69,10 @@ class CompleteScorecardShowContainer extends Component {
     event.preventDefault()
     for(let x =1; x<=courseLength; x++) {
       let stroke = {
-        scorecard_id: this.props.params.id[1],
+        scorecard_id: Number(this.props.params.id[1]),
         hole_id: this.state.course.holes[x-1].id,
-        strokes: document.getElementById(`stroke-${x}`).value
+        strokes: document.getElementById(`stroke-${x}`).value,
+        user_id: Number(this.props.params.user_id)
       }
       this.addScores(stroke)
     }
