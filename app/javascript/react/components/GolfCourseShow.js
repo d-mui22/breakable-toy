@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ScorecardShow from './ScorecardShow'
+import { Route, IndexRoute, Router, browserHistory } from 'react-router'
 
 class GolfCourseShow extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class GolfCourseShow extends Component {
   }
 
   addHole(payLoad) {
+    debugger
     fetch(`/api/v1/golf_courses/${this.props.id}/holes`, {
       credentials: 'same-origin',
       method: 'POST',
@@ -37,16 +39,20 @@ class GolfCourseShow extends Component {
   }
 
   handleHolesSubmit(event) {
+    debugger
     event.preventDefault()
     for(let x = 1; x<=18; x++) {
-      let hole = {
-        yards: document.getElementById(`yards-${x}`).value,
-        par: document.getElementById(`par-${x}`).value,
-        hole: document.getElementById(`${x}`).id,
-        golf_course_id: this.props.id
-      }
+      if (document.getElementById(`yards-${x}`).value != "") {
+        let hole = {
+          yards: document.getElementById(`yards-${x}`).value,
+          par: document.getElementById(`par-${x}`).value,
+          hole: Number(document.getElementById(`${x}`).id),
+          golf_course_id: this.props.id
+        }
       this.addHole(hole)
+      }
     }
+    browserHistory.push(`/users/1/golf_courses/${this.props.id}`)
   }
 
 
@@ -68,40 +74,10 @@ class GolfCourseShow extends Component {
         <button onClick={this.handleHoleClick}>Add Holes to {this.props.name}</button>
         {holesForm}
         <br/>
-        <a href='/golf_courses/1/holes'>Scorecard</a>
+        <a href='/users/1/golf_courses/1/'>Scorecard</a>
       </div>
     )
   }
 }
 
 export default GolfCourseShow;
-
-// let endPoints =
-// [`/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`,
-//   `/api/v1/golf_courses/${this.props.id}/holes`]
-//   let promises = endPoints.map((endPoint) => {
-//     return fetch(endPoint)
-//   })
-//   Promise.all(promises).then((responses) => {
-//     let parsedResponses = responses.map((response) => {
-//       return response.json();
-//     })
-//     return Promise.all(parsedResponses)
-//   })
-// }

@@ -5,7 +5,6 @@ class Api::V1::GolfCoursesController < ApplicationController
 
   def show
     golf_course = GolfCourse.find(params[:id])
-
     render json: golf_course
   end
 
@@ -22,6 +21,6 @@ class Api::V1::GolfCoursesController < ApplicationController
   private
 
   def golf_course_params
-    params.require(:golf_course).permit(:name)
+    params.require(:golf_course).permit(:name, :golf_course_id)
   end
 end
