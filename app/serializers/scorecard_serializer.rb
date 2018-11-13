@@ -9,4 +9,8 @@ class ScorecardSerializer < ActiveModel::Serializer
   def holes
     object.holes.sort_by(&:hole)
   end
+
+  def strokes
+    object.strokes.sort_by(&:holeNum)
+  end
 end

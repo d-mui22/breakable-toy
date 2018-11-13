@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 import CompleteScorecardHoleShow from '../components/CompleteScorecardHoleShow'
 import CompleteScorecardYardsShow from '../components/CompleteScorecardYardsShow'
 import CompleteScorecardParShow from '../components/CompleteScorecardParShow'
 import StrokeContainer from './StrokeContainer'
 
-class CompleteScorecardShowContainer extends Component {
+class ScorecardStrokeSubmit extends Component {
   constructor(props) {
     super(props);
     this.state = {
       course: []
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleStrokesSubmit = this.handleStrokesSubmit.bind(this)
   }
 
   componentDidMount(){
@@ -42,7 +43,6 @@ class CompleteScorecardShowContainer extends Component {
   }
 
   addScores(payLoad) {
-    debugger
     fetch(`/api/v1/users/${this.props.params.user_id}/golf_courses/${this.props.params.id[0]}/scorecards/${this.props.params.id[1]}/strokes`, {
       credentials: 'same-origin',
       method: 'post',
@@ -64,15 +64,18 @@ class CompleteScorecardShowContainer extends Component {
     })
   }
 
-  handleSubmit(event){
+  handleStrokesSubmit(event){
     let courseLength = this.state.course.holes.length
     event.preventDefault()
-    for(let x =1; x<=courseLength; x++) {
+    for(let x = 1; x<=courseLength; x++) {
+      debugger
       let stroke = {
         scorecard_id: Number(this.props.params.id[1]),
         hole_id: this.state.course.holes[x-1].id,
         strokes: document.getElementById(`stroke-${x}`).value,
-        user_id: Number(this.props.params.user_id)
+        user_id: Number(this.props.params.user_id),
+        par: Number(document.getElementById(`par-${x}`).textContent),
+        holeNum: Number(x)
       }
       this.addScores(stroke)
     }
@@ -94,7 +97,7 @@ class CompleteScorecardShowContainer extends Component {
         return(
           <CompleteScorecardHoleShow
           key={hole.id}
-          hole={hole.hole}
+          holeNumber={hole.hole}
           counter={holeCounter}
           />
         )
@@ -132,12 +135,13 @@ class CompleteScorecardShowContainer extends Component {
 
     return(
      <div>
-       <h1 className='course-name'>{this.state.course.name} Scorecard</h1>
+       <h1 className='scorecard-title'>{this.state.course.name} Scorecard</h1>
+       <br/>
         <form>
-         <table className='table-scroll'>
+         <table className='scroll table-scroll'>
            <thead>
              <tr className="scorecard-holes">
-              <th className='scorecard-label'>Hole</th>
+              <th className='scorecard-label' width='5%'>Hole</th>
                 {holes}
              </tr>
            </thead>
@@ -156,11 +160,11 @@ class CompleteScorecardShowContainer extends Component {
             </tr>
           </tbody>
         </table>
-        <button className="scorecard-submit" onClick={this.handleSubmit}>Submit Scorecard</button>
+        <button className="sc-submit-button circle" onClick={this.handleStrokesSubmit}></button>
       </form>
     </div>
     )
   }
 }
 
-export default CompleteScorecardShowContainer;
+export default ScorecardStrokeSubmit;
