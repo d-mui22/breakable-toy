@@ -30,7 +30,6 @@ class UserScorecardShow extends Component {
     })
     .catch(error => console.error('Error:', error));
   }
-
   addScorecard(payLoad) {
     fetch(`/api/v1/users/${this.props.params.id[0]}/golf_courses/${this.props.params.id[1]}/scorecards`, {
       credentials: 'same-origin',
@@ -42,6 +41,10 @@ class UserScorecardShow extends Component {
         'X-Requested-With': 'XMLHttpRequest'
       }
     })
+
+    let x = 0;
+    x += 1;
+    browserHistory.push(`/users/1/golf_courses/${this.props.params.id[1]}/scorecards/${x}`)
   }
 
   handleScorecardSubmit(event) {
@@ -56,8 +59,12 @@ class UserScorecardShow extends Component {
   render() {
     return(
       <div>
-        <h1>{this.state.course.name}</h1>
-        <button onClick={this.handleScorecardSubmit}>Add Scorecard to {this.state.course.name}</button>
+        <div className='scorecard-title'>
+        <h6 className='sc-add'>Add Scorecard</h6>
+        <h3 className='sc-cn'>{this.state.course.name}</h3>
+        </div>
+        <br/>
+        <button className='sc-submit-button circle' onClick={this.handleScorecardSubmit} href=""></button>
         <br/>
       </div>
     )

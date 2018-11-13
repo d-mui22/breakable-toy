@@ -8,27 +8,33 @@
   width: 75%;
   border: 2px solid blue;
   margin-left: 13%;
+  border-radius: 10px;
 }
 
 #sign #sign-up a {
   color: red;
-  border-left: 2px solid #fff;
-  border-right: 2px solid #fff;
-  border-radius: 80%;
+  border-radius: 50%;
   margin-right: 2px;
+  background: url("golfpics/golfball.jpg");
+  background-position: center;
+  font-weight: bold;
 }
+ p#sign-up{
+   margin-top: 20%;
+ }
 
 .index-title {
   color: #fff;
   text-shadow: 2px 5px 1px yellow, 10px 5px 20px #fff, 0 0 500px #fff;
-  font-size: 5em;
+  font-size: 4em;
   font-family: 'Merriweather', serif;
   background: -webkit-linear-gradient(red, red);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin:2% 0 0 15%;
+  float: left;
+  margin-left: 35%;
 }
-
+/*
 .hero-section {
   background: url("golfpics/header3.jpg") 50% no-repeat;
   background-size: cover;
@@ -44,7 +50,7 @@
   -webkit-justify-content: left;
       -ms-flex-pack: left;
           justify-content: left;
-}
+} */
 
 .mapsearchbar-label {
   margin: 0;

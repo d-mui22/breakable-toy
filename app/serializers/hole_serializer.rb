@@ -4,4 +4,6 @@ class HoleSerializer < ActiveModel::Serializer
   belongs_to :golf_course
   belongs_to :scorecard
   has_many :strokes
+
+
 end

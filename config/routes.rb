@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :golf_courses, only: [:index, :show] do
       resources :scorecards, only: [:index, :show, :create]
+      resources :holes, only: [:show]
     end
   end
 
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
         resources :golf_courses, only: [:index, :show] do
           resources :scorecards, only: [:index, :show, :create] do
             resources :holes, only: [:create, :show]
-            resources :strokes, only: [:show, :create]
+            resources :strokes, only: [:index, :show, :create]
           end
         end
       end

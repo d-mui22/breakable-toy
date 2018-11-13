@@ -20,6 +20,6 @@ class Api::V1::StrokesController < ApplicationController
   private
 
   def stroke_params
-    params.permit(:strokes, :scorecard_id, :hole_id, :user_id)
+    params.permit(:strokes, :scorecard_id, :hole_id, :user_id, :par, :holeNum)
   end
 end

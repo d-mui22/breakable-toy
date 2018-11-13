@@ -3,7 +3,7 @@ import React from 'react'
 const CompleteScorecardYardsShow = (props) => {
   let counterClass = `yards-${props.counter}`
   return(
-      <td id={counterClass}>{props.yards}</td>
+      <td className='yards-text' id={counterClass}>{props.yards}</td>
   )
 }
 

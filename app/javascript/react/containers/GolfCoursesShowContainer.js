@@ -30,23 +30,6 @@ class GolfCoursesShowContainer extends Component {
     .catch(error => console.error('Error:', error));
   }
 
-  addHole(payLoad) {
-    fetch(`/api/v1/golf_courses/${this.props.params.id}/holes`, {
-      credentials: 'same-origin',
-      method: 'POST',
-      body: JSON.stringify(payLoad),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      this.setState({})
-    })
-  }
-
   render() {
     let courses = this.state.new_courses.map(course => {
       return(

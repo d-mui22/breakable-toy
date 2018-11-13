@@ -25,7 +25,6 @@ class GolfCourseShow extends Component {
   }
 
   addHole(payLoad) {
-    debugger
     fetch(`/api/v1/golf_courses/${this.props.id}/holes`, {
       credentials: 'same-origin',
       method: 'POST',
@@ -39,7 +38,6 @@ class GolfCourseShow extends Component {
   }
 
   handleHolesSubmit(event) {
-    debugger
     event.preventDefault()
     for(let x = 1; x<=18; x++) {
       if (document.getElementById(`yards-${x}`).value != "") {
@@ -66,15 +64,13 @@ class GolfCourseShow extends Component {
     } else {
       holesForm = ''
     }
-
     return(
       <div>
-        <h1>{this.props.name}</h1>
+        <h1 className='scorecard-title'>{this.props.name}</h1>
         <br/>
-        <button onClick={this.handleHoleClick}>Add Holes to {this.props.name}</button>
+        <button className='sc-submit-button circle' onClick={this.handleHoleClick}>Add</button>
         {holesForm}
         <br/>
-        <a href='/users/1/golf_courses/1/'>Scorecard</a>
       </div>
     )
   }

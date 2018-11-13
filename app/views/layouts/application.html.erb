@@ -104,26 +104,29 @@
 </head>
 <body>
 
-  <nav class="top-bar">
+  <!-- <nav class="top-bar">
     <section id='sign' class="top-bar-section top-bar-right">
-      <ul class="right">
+      <ul class="right"> -->
+      <h1 class='index-title'>Golf Buddy</h1>
+      <div class="top-bar-section top-bar-right">
         <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        <div class="login-button circle"
+          <p><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'login-button-circle' %></p>
+        </div>
         <%- else -%>
-        <div class='sign-up-buttons'>
-          <li id='sign-up'><%= link_to 'Sign Up', new_user_registration_path, :class=>'sign-up' %></li>
-          <li id='sign-up'><%= link_to 'Sign In', new_user_session_path %></li>
-          </div>
+        <div class='sign-up-buttons circle'>
+          <p id='sign-up'><%= link_to 'Sign Up', new_user_registration_path, :class => 'login-button1'%></p>
+          <p id='sign-in'><%= link_to 'Sign In', new_user_session_path, :class => 'login-button2'%></p>
+        </div>
         <%- end -%>
-      </ul>
+        </div>
+        <br>
+        <br>
+      <!-- </ul>
     </section>
-  </nav>
+  </nav> -->
 
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
-    </div>
-  <%- end -%>
+
   <%= yield %>
 
   <%= javascript_include_tag 'application' %>
