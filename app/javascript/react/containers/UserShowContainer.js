@@ -35,12 +35,14 @@ class UserShowContainer extends Component {
     let scorecards;
     if (this.state.user != undefined) {
       scorecards = this.state.user.scorecards.map(scorecard => {
-        return(
-          <ScorecardTileContainer
-            key={scorecard.id}
-            scorecard={scorecard}
-          />
-        )
+        if (scorecard.holes != []) {
+          return(
+            <ScorecardTileContainer
+              key={scorecard.id}
+              scorecard={scorecard}
+            />
+          )
+        }else {return ("")}
       })
     }
     return(

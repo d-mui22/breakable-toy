@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router'
 
-class UserScorecardShow extends Component {
+class ScorecardSubmit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      course: []
+      course: [],
+      scorecard_count: ''
     }
     this.addScorecard = this.addScorecard.bind(this)
     this.handleScorecardSubmit = this.handleScorecardSubmit.bind(this)
@@ -41,10 +42,15 @@ class UserScorecardShow extends Component {
         'X-Requested-With': 'XMLHttpRequest'
       }
     })
-
-    let x = 0;
-    x += 1;
-    browserHistory.push(`/users/1/golf_courses/${this.props.params.id[1]}/scorecards/${x}`)
+    fetch(`/api/v1/users/:user_id/golf_courses/:golf_course_id/scorecards`)
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        scorecard_count: body.scorecards.length
+      })
+      let sc_id = this.state.scorecard_count + 1
+      browserHistory.push(`/users/1/golf_courses/${this.props.params.id[1]}/scorecards/${sc_id}`)
+    })
   }
 
   handleScorecardSubmit(event) {
@@ -71,4 +77,4 @@ class UserScorecardShow extends Component {
   }
 }
 
-export default UserScorecardShow;
+export default ScorecardSubmit;
