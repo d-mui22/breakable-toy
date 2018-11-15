@@ -8,6 +8,7 @@ class HoleShowContainer extends Component {
     this.state = {
     }
   }
+
   componentDidMount() {
     fetch(`/api/v1/users/${this.props.params.id[0]}`)
     .then(response => response.json())
@@ -17,6 +18,7 @@ class HoleShowContainer extends Component {
       })
     })
   }
+
   render() {
     let userHole;
     let userId = this.props.params.id[0]
@@ -25,31 +27,36 @@ class HoleShowContainer extends Component {
     let courseName;
     let courseHole;
     let holeSelected;
+    let filteredUserScorecards;
 
     if (this.state.userScorecards != undefined && this.state.userScorecards != []) {
-      userHole = this.state.userScorecards.map(scorecard => {
-        if (scorecard.golf_course.id == courseId) {
+      filteredUserScorecards = this.state.userScorecards.filter(function(scorecard) {
+        return scorecard.holes.length != 0;
+      });
+        userHole = filteredUserScorecards.map(scorecard => {
+          if (scorecard.golf_course.id == courseId) {
+            courseName = scorecard.golf_course.name
 
-          scorecard.holes.map(hole => {
-            if (hole.hole == holeId) {
-              holeSelected = hole.hole
-            }
-            return
-          })
-          courseName = scorecard.golf_course.name
-          return(
-            <HoleShow
-              key={scorecard.id}
-              scorecards={scorecard}
-              holes={scorecard.holes}
-              userId={userId}
-              courseId={courseId}
-              holeId={holeId}
-            />
-          )
+            scorecard.holes.forEach(hole =>{
+              if (hole.hole == holeId) {
+                holeSelected = hole.hole
+              }
+            })
+
+            return(
+              <HoleShow
+                key={scorecard.id}
+                scorecards={scorecard}
+                holes={scorecard.holes}
+                userId={userId}
+                courseId={courseId}
+                holeId={holeId}
+              />
+            )
         }
       })
     }
+
     return(
       <div>
         <div className='sign-up-container'>

@@ -13,9 +13,6 @@ class GolfCourseShow extends Component {
     this.addHole = this.addHole.bind(this)
   }
 
-  componentDidMount() {
-  }
-
   handleHoleClick(event) {
     if (this.state.click == 0) {
       this.setState({click: 1})
@@ -52,7 +49,6 @@ class GolfCourseShow extends Component {
     }
     browserHistory.push(`/users/1/golf_courses/${this.props.id}`)
   }
-
 
   render() {
     let holesForm;

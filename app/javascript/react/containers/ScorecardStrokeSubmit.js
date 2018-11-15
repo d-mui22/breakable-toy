@@ -68,7 +68,6 @@ class ScorecardStrokeSubmit extends Component {
     let courseLength = this.state.course.holes.length
     event.preventDefault()
     for(let x = 1; x<=courseLength; x++) {
-      debugger
       let stroke = {
         scorecard_id: Number(this.props.params.id[1]),
         hole_id: this.state.course.holes[x-1].id,
@@ -103,6 +102,7 @@ class ScorecardStrokeSubmit extends Component {
           />
         )
       })
+
       yards = this.state.golf_course.holes.map(hole => {
         yardCounter += 1;
         return(
@@ -113,6 +113,7 @@ class ScorecardStrokeSubmit extends Component {
           />
         )
       })
+
       par = this.state.golf_course.holes.map(hole => {
         parCounter += 1
         return(
@@ -123,6 +124,7 @@ class ScorecardStrokeSubmit extends Component {
           />
         )
       })
+
       stroke = this.state.golf_course.holes.map(hole => {
         strokeCounter += 1;
         return(
@@ -150,15 +152,15 @@ class ScorecardStrokeSubmit extends Component {
              <tbody>
               <tr className="scorecard-yards">
                 <td className="scorecard-label">Yards</td>
-                  {yards}
+                {yards}
               </tr>
               <tr className='scorecard-par'>
                 <td className='scorecard-label'>Par</td>
-                  {par}
+                {par}
               </tr>
               <tr className='scorecard-stroke'>
                 <td className='scorecard-label'>Stroke</td>
-                  {stroke}
+                {stroke}
               </tr>
             </tbody>
           </table>

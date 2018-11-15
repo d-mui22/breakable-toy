@@ -1,6 +1,7 @@
 import React from 'react'
 
 const CompleteScorecardStrokeShow = (props) => {
+  
   let counterClass = `stroke-${props.counter}`
   let color = ""
 

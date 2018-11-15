@@ -11,6 +11,7 @@ class UserShowContainer extends Component {
     this.state = {
     }
   }
+  
   componentDidMount() {
     fetch(`/api/v1/users/${this.props.params.id}`)
     .then(response => {

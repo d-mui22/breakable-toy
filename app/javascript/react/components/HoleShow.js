@@ -19,6 +19,7 @@ const HoleShow = (props) => {
     }
     return
   })
+  
   props.scorecards.strokes.map(stroke => {
     if (stroke.hole_id == holeSelectedId) {
       strokeSelected = stroke.strokes
