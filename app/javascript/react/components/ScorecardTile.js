@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ScorecardShow = (props) => {
+const ScorecardTile = (props) => {
   return(
     <div className='scorecard-form-container'>
       <div className='first-sc-form'>
@@ -82,4 +82,4 @@ const ScorecardShow = (props) => {
     </div>
   )
 }
-export default ScorecardShow
+export default ScorecardTile

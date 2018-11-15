@@ -9,12 +9,14 @@
 <div class="home-container">
 <h1 class='home-index'><%= 'Please select a Golf Course' %></h1>
 <% end %>
-<% @golfcourses.each do |course| %>
-  <% if (course.scorecards == []) %>
-    <div><h3 class="course-list"> <%= link_to course.name, golf_course_path(course) %> </h3></div>
-  <% else %>
-    <% id = course.id %>
-    <div> <h3 class="course-list"> <%= link_to course.name, user_golf_course_path(current_user, course) %> </h3></div>
+<% if (current_user) %>
+  <% @golfcourses.each do |course| %>
+    <% if (course.scorecards == []) %>
+      <div><h3 class="course-list"> <%= link_to course.name, golf_course_path(course) %> </h3></div>
+    <% else %>
+      <% id = course.id %>
+      <div> <h3 class="course-list"> <%= link_to course.name, user_golf_course_path(current_user, course) %> </h3></div>
+    <% end %>
   <% end %>
 <% end %>
 </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router'
 
-class ScorecardSubmit extends Component {
+class AddScorecard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,7 +31,7 @@ class ScorecardSubmit extends Component {
     })
     .catch(error => console.error('Error:', error));
   }
-  
+
   addScorecard(payLoad) {
     fetch(`/api/v1/users/${this.props.params.id[0]}/golf_courses/${this.props.params.id[1]}/scorecards`, {
       credentials: 'same-origin',
@@ -78,4 +78,4 @@ class ScorecardSubmit extends Component {
   }
 }
 
-export default ScorecardSubmit;
+export default AddScorecard;

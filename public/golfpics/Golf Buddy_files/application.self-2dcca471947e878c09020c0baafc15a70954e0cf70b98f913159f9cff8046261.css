@@ -1,0 +1,145 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+
+
+ */
+
+
+body{
+  background: url("golfpics/golf-grass3.jpg");
+}
+
+.top-bar {
+  padding: 25px 0;
+  margin-bottom: 0;
+}
+
+li#sign-up {
+  -webkit-background-fill-color: transparent;
+
+}
+
+div li {
+  padding:0 5px;
+  -webkit-background-fill-color: transparent;
+}
+
+.devise-sign {
+  border-radius: 100px;
+}
+
+a.login-button1 {
+  padding: 0;
+  margin-right: 20%;
+  color: blue;
+  font-weight: bold;
+  float: right;
+  margin-top: 20%;
+}
+
+a.login-button2 {
+  padding: 0;
+  margin-right: 20%;
+  color: blue;
+  font-weight: bold;
+  float: right;
+}
+
+a.login-button {
+  padding: 10px;
+  color: blue;
+  margin-top: 0;
+  margin-right:10px;
+  font-weight: bold;
+  float: right;
+  background-color: black;
+  border-radius: 50px;
+}
+
+a.login-button-circle {
+
+  color: blue;
+  margin-top: 30%;
+  margin-right:18px;
+  font-weight: bold;
+  float: right;
+}
+
+a.login-button1:hover {
+  transform: scale(1.2);
+}
+
+a.login-button2:hover {
+  transform: scale(1.2);
+}
+
+.circle {
+    height: 100px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    width:100px;
+    background: url("golfpics/golfball.jpg");
+    background-position: center;
+    text-align: center;
+}
+
+.right {
+  float:right;
+}
+
+.course-list {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.home-index {
+  text-align: center;
+}
+
+.home-container {
+  border: 2px solid black;
+  width: 70%;
+  margin-left: 15%;
+  background-color: lightgrey;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  border-radius: 20px;
+}
+
+input#search.mapsearchbar {
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+}
+
+.selected {
+  color: blue;
+  text-align: left;
+}
+
+.selected-stroke {
+  color: blue;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+th.hole-text {
+  text-align: center;
+}
