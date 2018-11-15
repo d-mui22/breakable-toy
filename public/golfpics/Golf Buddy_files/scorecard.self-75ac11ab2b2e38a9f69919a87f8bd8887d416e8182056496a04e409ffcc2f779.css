@@ -1,0 +1,219 @@
+
+.scorecard-holes {
+  background-color: green;
+  color: #fff;
+}
+
+th#hole-1:hover {
+  background-color: lightblue
+}
+
+th#hole-2:hover {
+  background-color: lightblue
+}
+
+th#hole-3:hover {
+  background-color: lightblue
+}
+
+th#hole-4:hover {
+  background-color: lightblue
+}
+
+th#hole-5:hover {
+  background-color: lightblue
+}
+
+th#hole-6:hover {
+  background-color: lightblue
+}
+
+th#hole-7:hover {
+  background-color: lightblue
+}
+
+th#hole-8:hover {
+  background-color: lightblue
+}
+
+th#hole-9:hover {
+  background-color: lightblue
+}
+
+th#hole-10:hover {
+  background-color: lightblue
+}
+
+th#hole-11:hover {
+  background-color: lightblue
+}
+
+th#hole-12:hover {
+  background-color: lightblue
+}
+
+th#hole-13:hover {
+  background-color: lightblue
+}
+
+th#hole-14:hover {
+  background-color: lightblue
+}
+
+th#hole-15:hover {
+  background-color: lightblue
+}
+
+th#hole-16:hover {
+  background-color: lightblue
+}
+
+th#hole-17:hover {
+  background-color: lightblue
+}
+
+th#hole-18:hover {
+  background-color: lightblue
+}
+
+.scorecard-yards {
+  background-color: gold;
+}
+
+.scorecard-label {
+  font-weight: bold;
+  width: 5%;
+}
+
+.scorecard-title {
+  text-align: center;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-top: 0px;
+  padding-bottom: 10px;
+  color: blue;
+  border-radius: 20px;
+  width: 50%;
+  margin-left: 25%;
+  background-color: #f2f2f2;
+}
+
+.scorecard-title2 {
+  text-align: center;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  color: blue;
+  border-radius: 20px;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.date-played {
+  text-align: center;
+  font-style: italic;
+  font-size: .7em;
+  margin-top: 0;
+  padding-top: 10px;
+  color: #000;
+  font-weight: bolder;
+}
+
+.table-display {
+  padding: 2%;
+  border-radius: 40px;
+  width: 95%;
+  margin-left: 2.5%;
+  background-color: black;
+  background: -webkit-linear-gradient(white, black);
+  -webkit-background-clip: background;
+  -webkit-background-fill-color: solid;
+  padding-bottom: 1%;
+  margin-bottom: 2%;
+}
+
+.stroke-red {
+  background-color: red;
+  color: yellow;
+  text-align: center;
+}
+
+.stroke-green {
+  background-color: green;
+  color: yellow;
+  text-align: center;
+}
+
+.stroke-par {
+  background-color: grey;
+  color: yellow;
+  text-align: center;
+}
+
+.first-sc-form {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.sc-button {
+  text-align: center;
+  width: 30%;
+  margin-left: 35%;
+  border-radius: 20px;
+}
+
+.sc-submit-button {
+  margin-left: 45%;
+  border-radius: 100%;
+  color: blue;
+  font-weight: bold;
+  align-content: center;
+}
+
+.scorecard-score {
+  color: yellow;
+  text-align: center;
+  font-weight: bold;
+}
+
+a.hole-links {
+  margin-left: 35%;
+  color: white;
+}
+
+.yards-text {
+  text-align: center;
+  font-weight: bold;
+}
+
+.par-text {
+  text-align: center;
+  font-weight: bold;
+}
+
+.circle:hover {
+  transform: scale(1.2);
+}
+
+.sc-add {
+  color: blue;
+  font-weight: bold;
+}
+
+.sc-cn {
+  color: blue;
+  font-weight: bold;
+}
+
+table {
+  border-radius: 10px;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border: .5px solid black;
+}
