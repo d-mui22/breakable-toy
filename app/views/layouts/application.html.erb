@@ -9,7 +9,6 @@
 
     let map;
     function addCourse(event) {
-      event.preventDefault();
       const courseName = event.currentTarget.attributes["data-course-name"].value
       fetch('/api/v1/golf_courses', {
         credentials: 'same-origin',
@@ -30,6 +29,7 @@
           throw(error);
         }
       })
+      window.location.reload();
     }
 
     function initialize() {
@@ -103,11 +103,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <!-- <nav class="top-bar">
     <section id='sign' class="top-bar-section top-bar-right">
       <ul class="right"> -->
-      <h1 class='index-title'>Golf Buddy</h1>
+      <div class="home-link">
+      <p> <%= link_to 'Golfer Buddy', root_path, :class => 'index-title'%> </p>
+      </div>
       <div class="top-bar-section top-bar-right">
         <%- if current_user -%>
         <div class="login-button circle"

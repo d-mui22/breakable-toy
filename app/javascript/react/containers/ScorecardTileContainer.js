@@ -17,7 +17,6 @@ class ScorecardTileContainer extends Component {
   holeSelector(holeInfo){
     let holeNum = holeInfo.holeNumber
     let courseNum = holeInfo.golfCourseId
-    debugger
     browserHistory.push(`/users/${this.props.scorecard.user_id}/golf_courses/${courseNum}/holes/${holeNum}`);
   }
 
@@ -29,7 +28,6 @@ class ScorecardTileContainer extends Component {
     let dat;
     let totalStrokes= 0;
     let totalPar=0;
-    debugger
     this.props.scorecard.strokes.forEach(stroke => {
       totalStrokes+=stroke.strokes
       totalPar+=stroke.par
@@ -59,7 +57,6 @@ class ScorecardTileContainer extends Component {
       return(
         <CompleteScorecardHoleShow
           key={hole.id}
-          id={hole.id}
           holeNumber={hole.hole}
           golfCourseId={hole.golf_course_id}
           counter={holeCounter}
@@ -82,30 +79,32 @@ class ScorecardTileContainer extends Component {
     })
     return(
       <div>
-        <table className='table-scroll scroll' name="Scorecard">
+        <div className='table-display'>
           <h4 className='scorecard-title2'>{this.props.scorecard.golf_course.name} Scorecard</h4><h6 className='date-played'>Played on {Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(this.dat)}</h6>
-          <thead>
-            <tr className="scorecard-holes">
-              <th className='scorecard-label'>Hole</th>
-              {holes}
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="scorecard-yards">
-              <td className="scorecard-label">Yards</td>
-              {yards}
-            </tr>
-            <tr className='scorecard-par'>
-              <td className='scorecard-label'>Par</td>
-              {pars}
-            </tr>
-            <tr className='scorecard-stroke'>
-              <td className='scorecard-label'>Stroke</td>
-              {strokes}
-            </tr>
-          </tbody>
+          <table className='scroll' name="Scorecard">
+            <thead>
+              <tr className="scorecard-holes">
+                <th className='scorecard-label'>Hole</th>
+                {holes}
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="scorecard-yards">
+                <td className="scorecard-label">Yards</td>
+                {yards}
+              </tr>
+              <tr className='scorecard-par'>
+                <td className='scorecard-label'>Par</td>
+                {pars}
+              </tr>
+              <tr className='scorecard-stroke'>
+                <td className='scorecard-label'>Stroke</td>
+                {strokes}
+              </tr>
+            </tbody>
+          </table>
           <p className='scorecard-score'>Par: {totalPar} Strokes: {totalStrokes}</p>
-        </table>
+        </div>
       </div>
     )
   }

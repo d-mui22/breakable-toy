@@ -79,6 +79,7 @@ class ScorecardStrokeSubmit extends Component {
       }
       this.addScores(stroke)
     }
+    browserHistory.push(`/users/${this.props.params.user_id}`)
   }
 
   render() {
@@ -138,28 +139,30 @@ class ScorecardStrokeSubmit extends Component {
        <h1 className='scorecard-title'>{this.state.course.name} Scorecard</h1>
        <br/>
         <form>
-         <table className='scroll table-scroll'>
-           <thead>
-             <tr className="scorecard-holes">
-              <th className='scorecard-label' width='5%'>Hole</th>
-                {holes}
-             </tr>
-           </thead>
-           <tbody>
-            <tr className="scorecard-yards">
-              <td className="scorecard-label">Yards</td>
-                {yards}
-            </tr>
-            <tr className='scorecard-par'>
-              <td className='scorecard-label'>Par</td>
-                {par}
-            </tr>
-            <tr className='scorecard-stroke'>
-              <td className='scorecard-label'>Stroke</td>
-                {stroke}
-            </tr>
-          </tbody>
-        </table>
+          <div className='table-display'>
+           <table className='scroll'>
+             <thead>
+               <tr className="scorecard-holes">
+                <th className='scorecard-label' width='5%'>Hole</th>
+                  {holes}
+               </tr>
+             </thead>
+             <tbody>
+              <tr className="scorecard-yards">
+                <td className="scorecard-label">Yards</td>
+                  {yards}
+              </tr>
+              <tr className='scorecard-par'>
+                <td className='scorecard-label'>Par</td>
+                  {par}
+              </tr>
+              <tr className='scorecard-stroke'>
+                <td className='scorecard-label'>Stroke</td>
+                  {stroke}
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <button className="sc-submit-button circle" onClick={this.handleStrokesSubmit}></button>
       </form>
     </div>
