@@ -21,6 +21,7 @@ module BreakableToy
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.assets.compile = true
     config.serve_static_files = true
     config.assets.digest = true
     # Settings in config/environments/* take precedence over those specified here.
