@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ScorecardShow from './ScorecardShow'
+import ScorecardTile from './ScorecardTile'
 import { Route, IndexRoute, Router, browserHistory } from 'react-router'
 
 class GolfCourseShow extends Component {
@@ -54,7 +54,7 @@ class GolfCourseShow extends Component {
     let holesForm;
 
     if (this.state.click == 1) {
-      holesForm = <ScorecardShow
+      holesForm = <ScorecardTile
         handleHolesSubmit={this.handleHolesSubmit}
         />
     } else {

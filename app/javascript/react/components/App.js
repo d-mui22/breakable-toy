@@ -4,7 +4,7 @@ import { Route, IndexRoute, Router, browserHistory } from 'react-router'
 import UserShowContainer from '../containers/UserShowContainer'
 import GolfCoursesShowContainer from '../containers/GolfCoursesShowContainer'
 import ScorecardStrokeSubmit from '../containers/ScorecardStrokeSubmit'
-import ScorecardSubmit from './ScorecardSubmit'
+import AddScorecard from './AddScorecard'
 import HoleShowContainer from '../containers/HoleShowContainer'
 
 export const App = (props) => {
@@ -15,7 +15,7 @@ export const App = (props) => {
         <Route path="/users/:id" component={UserShowContainer}/>
         <Route path='/users/:user_id/golf_courses/:id/scorecards/:id' component={ScorecardStrokeSubmit}/>
         <Route path="/golf_courses/:id" component={GolfCoursesShowContainer}/>
-        <Route path="/users/:id/golf_courses/:id" component={ScorecardSubmit}/>
+        <Route path="/users/:id/golf_courses/:id" component={AddScorecard}/>
         <Route path="/users/:id/golf_courses/:id/holes/:id" component={HoleShowContainer}/>
       </Router>
     </div>

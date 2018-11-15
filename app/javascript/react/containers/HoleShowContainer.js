@@ -36,7 +36,6 @@ class HoleShowContainer extends Component {
         userHole = filteredUserScorecards.map(scorecard => {
           if (scorecard.golf_course.id == courseId) {
             courseName = scorecard.golf_course.name
-
             scorecard.holes.forEach(hole =>{
               if (hole.hole == holeId) {
                 holeSelected = hole.hole
