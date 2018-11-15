@@ -31,6 +31,7 @@ class ScorecardSubmit extends Component {
     })
     .catch(error => console.error('Error:', error));
   }
+  
   addScorecard(payLoad) {
     fetch(`/api/v1/users/${this.props.params.id[0]}/golf_courses/${this.props.params.id[1]}/scorecards`, {
       credentials: 'same-origin',

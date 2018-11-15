@@ -28,10 +28,12 @@ class ScorecardTileContainer extends Component {
     let dat;
     let totalStrokes= 0;
     let totalPar=0;
+
     this.props.scorecard.strokes.forEach(stroke => {
       totalStrokes+=stroke.strokes
       totalPar+=stroke.par
     })
+
     let pars = this.props.scorecard.holes.map(par => {
       parCounter += 1;
       return(
@@ -42,6 +44,7 @@ class ScorecardTileContainer extends Component {
         />
       )
     })
+
     let yards = this.props.scorecard.holes.map(yard => {
       yardCounter += 1;
       return(
@@ -52,6 +55,7 @@ class ScorecardTileContainer extends Component {
         />
       )
     })
+
     let holes = this.props.scorecard.holes.map(hole => {
       holeCounter += 1;
       return(
@@ -65,6 +69,7 @@ class ScorecardTileContainer extends Component {
         />
       )
     })
+
     let strokes = this.props.scorecard.strokes.map(stroke => {
       strokeCounter += 1;
         dat = stroke.created_at
@@ -77,6 +82,7 @@ class ScorecardTileContainer extends Component {
         />
       )
     })
+    
     return(
       <div>
         <div className='table-display'>

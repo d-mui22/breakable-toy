@@ -1,13 +1,6 @@
 import React from 'react'
 
 const ScorecardShow = (props) => {
-
-  let scorecardHoles = '';
-
-  for(let i = 0; i < 19; i++) {
-      scorecardHoles += (<th id={`yard-${i}`}>`${i}`</th>)
-    }
-
   return(
     <div className='scorecard-form-container'>
       <div className='first-sc-form'>

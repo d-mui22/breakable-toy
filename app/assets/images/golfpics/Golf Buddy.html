@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://localhost:3000/golf_courses/4 -->
+<html style="" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths whatinput-types-initial whatinput-types-mouse" data-whatinput="mouse" data-whatintent="mouse"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Golf Buddy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link href="./Golf Buddy_files/css" rel="stylesheet">
+  <script type="text/javascript" src="./Golf Buddy_files/js"></script>
+  <script>
+
+    let map;
+    function addCourse(event) {
+      const courseName = event.currentTarget.attributes["data-course-name"].value
+      fetch('/api/v1/golf_courses', {
+        credentials: 'same-origin',
+        method: 'post',
+        body: JSON.stringify({name: courseName}),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      })
+      .then(response => {
+        if(response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      window.location.reload();
+    }
+
+    function initialize() {
+      let place;
+      let center = new google.maps.LatLng(42.3540243,-71.0610617);
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: center,
+        zoom: 12
+      });
+      let input = document.getElementById('search');
+      let autocomplete = new google.maps.places.Autocomplete(input);
+      autocomplete.bindTo('bounds', map)
+      google.maps.event.addListener(autocomplete, 'place_changed', function(){
+        place = autocomplete.getPlace();
+        if (!place.geometry){
+          return;
+        }
+        if (place.geometry.viewport) {
+          map.fitBounds(place.geometry.viewport);
+        } else {
+          map.setCenter(place.geometry.location);
+          map.setZoom(12);
+        }
+        marker.setPlace( ({
+          placeId: place.place_id,
+          location: place.geometry.location
+        }));
+      })
+
+      let request = {
+        location: center,
+        radius: 50000,
+        types: ['establishment'],
+        keyword: ['golf course']
+      };
+
+      let service = new google.maps.places.PlacesService(map);
+      service.nearbySearch(request, callback);
+    }
+
+    function callback(results, status) {
+      if(status == google.maps.places.PlacesServiceStatus.OK){
+        for (let i = 0; i<results.length; i++){
+          createMarker(results[i]);
+        }
+      }
+    }
+
+    function createMarker(place) {
+      let placeLoc = place.geometry.location;
+      let marker = new google.maps.Marker({
+        map: map,
+        position: placeLoc
+      });
+      let payLoad = {
+        name: place.name
+      };
+      let infowindow = new google.maps.InfoWindow({
+        content: ('<h6>' + place.name +'</h6>' + "Rating: " + place.rating + " Stars<br/><br/>"+ '<button data-course-name="' + payLoad.name + '" onClick="addCourse(event)">Add Course</button>')
+      })
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map, marker);
+      });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+  <link rel="stylesheet" media="all" href="./Golf Buddy_files/app.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+<link rel="stylesheet" media="all" href="./Golf Buddy_files/foundation.self-639f7b98e1cfd800e439a945f79e81c0fea695d04140a73b2621829dc35b6ee7.css">
+<link rel="stylesheet" media="all" href="./Golf Buddy_files/foundation.min.self-7e4e05640f1ff58b30fa71f0c561bd382b2f1b41153a875732793693c2d63c25.css">
+<link rel="stylesheet" media="all" href="./Golf Buddy_files/foundation_and_overrides.self-a725a2496287641c8c34488c990faa26cdf2afc4614195de7df7140a36c91c37.css">
+<link rel="stylesheet" media="all" href="./Golf Buddy_files/homepage.self-355d7954e991206159b1a0a14a6eb4a54d834d4564b3c1e2aa92c925c30db480.css">
+<link rel="stylesheet" media="all" href="./Golf Buddy_files/scorecard.self-75ac11ab2b2e38a9f69919a87f8bd8887d416e8182056496a04e409ffcc2f779.css">
+<link rel="stylesheet" media="all" href="./Golf Buddy_files/signup_form.self-717cd7b6b4a6f37d11bf6f29e35df61bc18a4508d3e8e8c29681567ddc3991e0.css">
+<link rel="stylesheet" media="all" href="./Golf Buddy_files/application.self-2dcca471947e878c09020c0baafc15a70954e0cf70b98f913159f9cff8046261.css">
+
+    <script src="./Golf Buddy_files/modernizr.self-74da3245def7569da28115667be6a85a2ad97464abe707c9829c46d8975597bc.js"></script>
+
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="gXDYsQ+pW0sdGr9C+U62rVK2QZvNXOZBzP4xH5HWu3P5qjlKOX0LOauaRmyXq5fSB85k/B6jhHxw+QS+/jk+UA==">
+<meta class="foundation-mq"></head>
+<body>
+  <!-- <nav class="top-bar">
+    <section id='sign' class="top-bar-section top-bar-right">
+      <ul class="right"> -->
+      <div class="home-link">
+      <p> <a class="index-title" href="http://localhost:3000/">Golfer Buddy</a> </p>
+      </div>
+      <div class="top-bar-section top-bar-right">
+        <div class="login-button circle" <p=""><a class="login-button-circle" rel="nofollow" data-method="delete" href="http://localhost:3000/users/sign_out">Sign Out</a><p></p>
+        </div>
+        </div>
+        <br>
+        <br>
+      <!-- </ul>
+    </section>
+  </nav> -->
+
+
+  <div id="app"><div data-reactroot=""><div><div><h1 class="scorecard-title">Southborough Golf Club</h1><br><button class="sc-submit-button circle">Add</button><!-- react-text: 7 --><!-- /react-text --><br></div></div></div></div><script type="text/javascript" src="chrome-extension://emikbbbebcdfohonlaifafnoanocnebl/js/minerkill.js"></script></body></html>
