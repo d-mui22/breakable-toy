@@ -109,7 +109,7 @@
       <div class="home-link">
       <p> <%= link_to 'Golfer Buddy', root_path, :class => 'index-title'%> </p>
       </div>
-      <div class="top-bar-section top-bar-right">
+      <div class="top-bar-right">
         <%- if current_user -%>
         <div class="login-button circle"
           <p><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'login-button-circle' %></p>
@@ -126,7 +126,6 @@
       <!-- </ul>
     </section>
   </nav> -->
-
 
   <%= yield %>
 

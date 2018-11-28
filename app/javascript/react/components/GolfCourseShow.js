@@ -6,12 +6,38 @@ class GolfCourseShow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      click: 0
+      click: 0,
+      current_user: []
     }
     this.handleHoleClick = this.handleHoleClick.bind(this)
     this.handleHolesSubmit = this.handleHolesSubmit.bind(this)
     this.addHole = this.addHole.bind(this)
   }
+
+  componentDidMount() {
+    fetch(`/api/v1/users`)
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        debugger
+        this.setState({
+          current_user: body
+        })
+      })
+      .then(body => {
+        this.props.getCurrentUser(this.state.current_user)
+        current_user_id = this.state.current_user.id
+      })
+      .catch(error => console.error('Error:', error));
+    }
 
   handleHoleClick(event) {
     if (this.state.click == 0) {
@@ -46,8 +72,8 @@ class GolfCourseShow extends Component {
         }
       this.addHole(hole)
       }
-    }
-    browserHistory.push(`/users/1/golf_courses/${this.props.id}`)
+    }debugger
+    browserHistory.push(`/users/${current_user_id}/golf_courses/${this.props.id}`)
   }
 
   render() {

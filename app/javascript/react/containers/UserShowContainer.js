@@ -11,7 +11,7 @@ class UserShowContainer extends Component {
     this.state = {
     }
   }
-  
+
   componentDidMount() {
     fetch(`/api/v1/users/${this.props.params.id}`)
     .then(response => {
@@ -36,7 +36,7 @@ class UserShowContainer extends Component {
     let scorecards;
     if (this.state.user != undefined) {
       scorecards = this.state.user.scorecards.map(scorecard => {
-        if (scorecard.holes != []) {
+        if (scorecard.holes[0] != undefined) {
           return(
             <ScorecardTileContainer
               key={scorecard.id}
