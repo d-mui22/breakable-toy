@@ -32,10 +32,6 @@ class GolfCourseShow extends Component {
           current_user: body
         })
       })
-      .then(body => {
-        this.props.getCurrentUser(this.state.current_user)
-        current_user_id = this.state.current_user.id
-      })
       .catch(error => console.error('Error:', error));
     }
 
@@ -72,8 +68,8 @@ class GolfCourseShow extends Component {
         }
       this.addHole(hole)
       }
-    }debugger
-    browserHistory.push(`/users/${current_user_id}/golf_courses/${this.props.id}`)
+    }
+    browserHistory.push(`/users/${window.currentUser.id}/golf_courses/${this.props.id}`)
   }
 
   render() {

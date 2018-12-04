@@ -8,7 +8,6 @@ class GolfCoursesShowContainer extends Component {
       new_courses: [],
       error: ''
     }
-    this.getCurrentUser = this.getCurrentUser.bind(this)
   }
 
   componentDidMount(){
@@ -24,16 +23,12 @@ class GolfCoursesShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      debugger
       this.setState({
         new_courses: [body.golf_course]
       });
     })
     .catch(error => console.error('Error:', error));
-  }
-
-  getCurrentUser(payload){
-    debugger
-    this.setState({current_user: payload})
   }
 
   render() {
@@ -44,7 +39,6 @@ class GolfCoursesShowContainer extends Component {
           key={course.id}
           id={course.id}
           name={course.name}
-          getCurrentUser={this.getCurrentUser}
         />
       )
     })

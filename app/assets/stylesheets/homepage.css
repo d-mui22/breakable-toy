@@ -33,6 +33,10 @@
   -webkit-text-fill-color: transparent;
 }
 
+a.index-title:hover {
+  font-size: 4.5em;
+}
+
 .home-link {
   float: left;
   margin-left: 35%;

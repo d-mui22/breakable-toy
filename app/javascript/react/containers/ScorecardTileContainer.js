@@ -82,7 +82,7 @@ class ScorecardTileContainer extends Component {
         />
       )
     })
-    
+
     return(
       <div>
         <div className='table-display'>

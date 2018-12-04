@@ -6,8 +6,8 @@
   <link href="https://fonts.googleapis.com/css?family=Merriweather:700" rel="stylesheet">
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<%=ENV["GOOGLE_MAPS_API_KEY"]%>"></script>
   <script>
-
     let map;
+
     function addCourse(event) {
       const courseName = event.currentTarget.attributes["data-course-name"].value
       fetch('/api/v1/golf_courses', {
@@ -103,6 +103,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
   <!-- <nav class="top-bar">
     <section id='sign' class="top-bar-section top-bar-right">
       <ul class="right"> -->
@@ -137,6 +138,12 @@
     <%- end -%>
   <%- end -%>
   <%= javascript_pack_tag 'application' %>
+
+  <%- if current_user -%>
+    <%= javascript_tag do %>
+      window.currentUser = <%==current_user.to_json%>
+    <%- end -%>
+  <%- end -%>
 
   <%= yield :extra_footer %>
 </body>

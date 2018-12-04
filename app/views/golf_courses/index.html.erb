@@ -8,13 +8,11 @@
 <h1 class='home-index'><%= 'Please select a Golf Course' %></h1>
   <% @golfcourses.each do |course| %>
     <% if (course.scorecards == []) %>
-    <%= react_component 'GolfCoursesShowContainer', props: {current_user: current_user} %>
-      <div><h3 class="course-list"> <%= link_to course.name, golf_course_path(course), props: {current_user: current_user} %> </h3></div>
+      <div><h3 class="course-list"> <%= link_to course.name, golf_course_path(course) %> </h3></div>
     <% else %>
       <% if (current_user) %>
         <% id = course.id %>
-        <div> <h3 class="course-list"> <%= link_to course.name, user_golf_course_path(current_user, course), props: {current_user: current_user} %> </h3></div>
-        <%= react_component 'AddScorecard', props: {current_user: current_user} %>
+        <div> <h3 class="course-list"> <%= link_to course.name, user_golf_course_path(current_user, course) %> </h3></div>
       <% end %>
     <% end %>
   <% end %>
