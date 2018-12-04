@@ -43,6 +43,8 @@ class ScorecardStrokeSubmit extends Component {
   }
 
   addScores(payLoad) {
+    let courseId = this.props.params.id[0]
+    let scorecardId = this.props.params.id[1]
     fetch(`/api/v1/users/${this.props.params.user_id}/golf_courses/${this.props.params.id[0]}/scorecards/${this.props.params.id[1]}/strokes`, {
       credentials: 'same-origin',
       method: 'post',
@@ -72,7 +74,7 @@ class ScorecardStrokeSubmit extends Component {
         scorecard_id: Number(this.props.params.id[1]),
         hole_id: this.state.course.holes[x-1].id,
         strokes: document.getElementById(`stroke-${x}`).value,
-        user_id: Number(this.props.params.user_id),
+        user_id: Number(this.props.params.id[0]),
         par: Number(document.getElementById(`par-${x}`).textContent),
         holeNum: Number(x)
       }

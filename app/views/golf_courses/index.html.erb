@@ -1,21 +1,19 @@
-
-
-<input class='mapsearchbar' id="search" type="text" size="10" width="40">
-<div id="map">
+<input class='mapsearchbar' id="search" type="text" size="10" width="40"/>
+<div id="map-display">
   LOADING
 </div>
 
 <% if(@golfcourses != []) %>
 <div class="home-container">
 <h1 class='home-index'><%= 'Please select a Golf Course' %></h1>
-<% end %>
-<% if (current_user) %>
   <% @golfcourses.each do |course| %>
     <% if (course.scorecards == []) %>
       <div><h3 class="course-list"> <%= link_to course.name, golf_course_path(course) %> </h3></div>
     <% else %>
-      <% id = course.id %>
-      <div> <h3 class="course-list"> <%= link_to course.name, user_golf_course_path(current_user, course) %> </h3></div>
+      <% if (current_user) %>
+        <% id = course.id %>
+        <div> <h3 class="course-list"> <%= link_to course.name, user_golf_course_path(current_user, course) %> </h3></div>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

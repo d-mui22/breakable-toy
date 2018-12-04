@@ -50,7 +50,7 @@ class AddScorecard extends Component {
         scorecard_count: body.scorecards.length
       })
       let sc_id = this.state.scorecard_count + 1
-      browserHistory.push(`/users/1/golf_courses/${this.props.params.id[1]}/scorecards/${sc_id}`)
+      browserHistory.push(`/users/${this.props.params.id[0]}/golf_courses/${this.props.params.id[1]}/scorecards/${sc_id}`)
     })
   }
 

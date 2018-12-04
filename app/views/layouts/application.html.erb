@@ -4,10 +4,10 @@
   <title>Golf Buddy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <link href="https://fonts.googleapis.com/css?family=Merriweather:700" rel="stylesheet">
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBm8YN3HD2PoaY-acpIgId8QHZse0sSZGs"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<%=ENV["GOOGLE_MAPS_API_KEY"]%>"></script>
   <script>
-
     let map;
+
     function addCourse(event) {
       const courseName = event.currentTarget.attributes["data-course-name"].value
       fetch('/api/v1/golf_courses', {
@@ -35,7 +35,7 @@
     function initialize() {
       let place;
       let center = new google.maps.LatLng(42.3540243,-71.0610617);
-      map = new google.maps.Map(document.getElementById('map'), {
+      map = new google.maps.Map(document.getElementById('map-display'), {
         center: center,
         zoom: 12
       });
@@ -103,13 +103,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
   <!-- <nav class="top-bar">
     <section id='sign' class="top-bar-section top-bar-right">
       <ul class="right"> -->
       <div class="home-link">
       <p> <%= link_to 'Golfer Buddy', root_path, :class => 'index-title'%> </p>
       </div>
-      <div class="top-bar-section top-bar-right">
+      <div class="top-bar-right">
         <%- if current_user -%>
         <div class="login-button circle"
           <p><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'login-button-circle' %></p>
@@ -127,7 +128,6 @@
     </section>
   </nav> -->
 
-
   <%= yield %>
 
   <%= javascript_include_tag 'application' %>
@@ -138,6 +138,12 @@
     <%- end -%>
   <%- end -%>
   <%= javascript_pack_tag 'application' %>
+
+  <%- if current_user -%>
+    <%= javascript_tag do %>
+      window.currentUser = <%==current_user.to_json%>
+    <%- end -%>
+  <%- end -%>
 
   <%= yield :extra_footer %>
 </body>

@@ -17,7 +17,7 @@
  */
 
 body{
-  background: url("golfpics/golf-grass3.jpg");
+  background-image: url("https://s3.amazonaws.com/project-bikeshed-production/golf-grass3.jpg");
 }
 
 .top-bar {
@@ -90,7 +90,7 @@ a.login-button2:hover {
     -moz-border-radius:50%;
     -webkit-border-radius:50%;
     width:100px;
-    background: url("golfpics/golfball.jpg");
+    background-image: url("https://s3.amazonaws.com/project-bikeshed-production/golfball.jpeg");
     background-position: center;
     text-align: center;
 }
