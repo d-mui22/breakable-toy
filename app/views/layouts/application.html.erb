@@ -102,31 +102,27 @@
 
   <%= csrf_meta_tags %>
 </head>
+<div class="user-button">
+  <p> <%=  link_to 'Profile', "/users/#{current_user.id}" %></p>
+</div>
 <body>
-
-  <!-- <nav class="top-bar">
-    <section id='sign' class="top-bar-section top-bar-right">
-      <ul class="right"> -->
-      <div class="home-link">
-      <p> <%= link_to 'Golfer Buddy', root_path, :class => 'index-title'%> </p>
-      </div>
-      <div class="top-bar-right">
-        <%- if current_user -%>
-        <div class="login-button circle"
-          <p><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'login-button-circle' %></p>
-        </div>
-        <%- else -%>
-        <div class='sign-up-buttons circle'>
-          <p id='sign-up'><%= link_to 'Sign Up', new_user_registration_path, :class => 'login-button1'%></p>
-          <p id='sign-in'><%= link_to 'Sign In', new_user_session_path, :class => 'login-button2'%></p>
-        </div>
-        <%- end -%>
-        </div>
-        <br>
-        <br>
-      <!-- </ul>
-    </section>
-  </nav> -->
+  <div class="home-link">
+  <p> <%= link_to 'Golfer Buddy', root_path, :class => 'index-title'%> </p>
+  </div>
+  <div class="top-bar-right">
+    <%- if current_user -%>
+    <div class="login-button circle"
+      <p><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'login-button-circle' %></p>
+    </div>
+    <%- else -%>
+    <div class='sign-up-buttons circle'>
+      <p id='sign-up'><%= link_to 'Sign Up', new_user_registration_path, :class => 'login-button1'%></p>
+      <p id='sign-in'><%= link_to 'Sign In', new_user_session_path, :class => 'login-button2'%></p>
+    </div>
+    <%- end -%>
+    </div>
+    <br>
+    <br>
 
   <%= yield %>
 
