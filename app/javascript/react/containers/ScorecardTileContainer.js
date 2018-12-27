@@ -34,7 +34,6 @@ class ScorecardTileContainer extends Component {
       totalPar+=stroke.par
       if (Boolean(stroke.created_at)) {
         dat = stroke.created_at
-        debugger
       }
     })
 
