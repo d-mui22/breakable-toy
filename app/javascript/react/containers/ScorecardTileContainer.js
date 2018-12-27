@@ -25,14 +25,19 @@ class ScorecardTileContainer extends Component {
     let yardCounter = 0;
     let strokeCounter = 0;
     let holeCounter = 0;
-    let dat;
+    let dat = '';
     let totalStrokes= 0;
     let totalPar=0;
 
     this.props.scorecard.strokes.forEach(stroke => {
       totalStrokes+=stroke.strokes
       totalPar+=stroke.par
+      if (Boolean(stroke.created_at)) {
+        dat = stroke.created_at
+        debugger
+      }
     })
+
 
     let pars = this.props.scorecard.holes.map(par => {
       parCounter += 1;
@@ -72,7 +77,6 @@ class ScorecardTileContainer extends Component {
 
     let strokes = this.props.scorecard.strokes.map(stroke => {
       strokeCounter += 1;
-        dat = stroke.created_at
       return(
         <CompleteScorecardStrokeShow
           key={stroke.id}
@@ -86,7 +90,7 @@ class ScorecardTileContainer extends Component {
     return(
       <div>
         <div className='table-display'>
-          <h4 className='scorecard-title2'>{this.props.scorecard.golf_course.name} Scorecard</h4><h6 className='date-played'>Played on {Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(this.dat)}</h6>
+          <h4 className='scorecard-title2'>{this.props.scorecard.golf_course.name} Scorecard</h4><h6 className='date-played'>Played on {dat.split('T')[0]}</h6>
           <table className='scroll' name="Scorecard">
             <thead>
               <tr className="scorecard-holes">

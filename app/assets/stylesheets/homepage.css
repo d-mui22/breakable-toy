@@ -11,6 +11,10 @@
   border-radius: 10px;
 }
 
+.hidden {
+  display: none;
+}
+
 #sign #sign-up a {
   color: red;
   border-radius: 50%;

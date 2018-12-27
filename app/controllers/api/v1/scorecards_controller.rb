@@ -19,6 +19,6 @@ class Api::V1::ScorecardsController < ApplicationController
   private
 
   def scorecard_params
-    params.require(:scorecard).permit(:user_id, :golf_course_id)
+    params.require(:scorecard).permit(:user_id, :golf_course_id, :created_at)
   end
 end
