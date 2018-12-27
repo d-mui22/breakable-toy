@@ -67,7 +67,7 @@ class AddScorecard extends Component {
     return(
       <div>
         <div className='scorecard-title'>
-        <h6 className='sc-add'>Add Scorecard</h6>
+        <h6 className='sc-add'>Add Scorecard to Profile</h6>
         <h3 className='sc-cn'>{this.state.course.name}</h3>
         </div>
         <br/>
