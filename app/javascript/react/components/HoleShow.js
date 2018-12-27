@@ -19,11 +19,15 @@ const HoleShow = (props) => {
     }
     return
   })
-  
+
   props.scorecards.strokes.map(stroke => {
     if (stroke.hole_id == holeSelectedId) {
+      if (stroke.strokes == undefined) {
+        strokeSelected = "Hole not played"
+      } else {
       strokeSelected = stroke.strokes
       datePlayed = stroke.created_at
+      }
     }
   })
 

@@ -28,6 +28,7 @@ class HoleShowContainer extends Component {
     let courseHole;
     let holeSelected;
     let filteredUserScorecards;
+    let holeSelectedPar;
 
     if (this.state.userScorecards != undefined && this.state.userScorecards != []) {
       filteredUserScorecards = this.state.userScorecards.filter(function(scorecard) {
@@ -39,6 +40,7 @@ class HoleShowContainer extends Component {
             scorecard.holes.forEach(hole =>{
               if (hole.hole == holeId) {
                 holeSelected = hole.hole
+                holeSelectedPar = hole.par
               }
             })
 
@@ -62,6 +64,7 @@ class HoleShowContainer extends Component {
           <div className='field-container'>
             <h2 className='selected'>{courseName}</h2>
             <h2 className='selected'>Hole Number: {holeSelected}</h2>
+            <h2 className='selected'>Par: {holeSelectedPar}</h2>
           </div>
         </div>
         <br/>
