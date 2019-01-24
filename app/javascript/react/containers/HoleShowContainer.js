@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import CompleteScorecardHoleShow from '../components/CompleteScorecardHoleShow'
-import HoleShow from '../components/HoleShow'
+import SelectedHoleShow from '../components/SelectedHoleShow'
 
 class HoleShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      userScorecards: []
     }
   }
 
@@ -45,7 +46,7 @@ class HoleShowContainer extends Component {
             })
 
             return(
-              <HoleShow
+              <SelectedHoleShow
                 key={scorecard.id}
                 scorecards={scorecard}
                 holes={scorecard.holes}
