@@ -8,9 +8,6 @@ import CompleteScorecardStrokeShow from '../components/CompleteScorecardStrokeSh
 class UserShowContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: []
-    }
   }
 
   componentDidMount() {
@@ -35,6 +32,7 @@ class UserShowContainer extends Component {
 
   render() {
     let scorecards;
+    debugger
     if (this.state.user != undefined) {
       scorecards = this.state.user.scorecards.map(scorecard => {
         if (scorecard.holes[0] != undefined) {

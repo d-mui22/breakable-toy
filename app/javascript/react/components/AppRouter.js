@@ -7,7 +7,7 @@ import ScorecardStrokeSubmit from '../containers/ScorecardStrokeSubmit'
 import AddScorecard from './AddScorecard'
 import HoleShowContainer from '../containers/HoleShowContainer'
 
-export const App = (props) => {
+export const AppRouter = (props) => {
   return (
     <div>
       <Router history={browserHistory}>
@@ -22,4 +22,4 @@ export const App = (props) => {
   )
 }
 
-export default App;
+export default AppRouter;
