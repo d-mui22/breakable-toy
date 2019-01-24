@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 
-const HoleShow = (props) => {
+const SelectedHoleShow = (props) => {
   let holeSelected;
   let scorecardSelected;
   let strokeSelected;
@@ -47,4 +47,4 @@ const HoleShow = (props) => {
   )
 }
 
-export default HoleShow
+export default SelectedHoleShow

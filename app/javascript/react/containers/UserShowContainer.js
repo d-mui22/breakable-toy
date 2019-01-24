@@ -9,6 +9,7 @@ class UserShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: []
     }
   }
 
@@ -41,6 +42,7 @@ class UserShowContainer extends Component {
             <ScorecardTileContainer
               key={scorecard.id}
               scorecard={scorecard}
+              golfCourseId={scorecard.golf_course_id}
             />
           )
         }else {return ("")}
