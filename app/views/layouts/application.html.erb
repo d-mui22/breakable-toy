@@ -34,6 +34,7 @@
 
     function initialize() {
       let place;
+
       let center = new google.maps.LatLng(42.3540243,-71.0610617);
       map = new google.maps.Map(document.getElementById('map-display'), {
         center: center,
@@ -53,21 +54,19 @@
           map.setCenter(place.geometry.location);
           map.setZoom(12);
         }
-        marker.setPlace( ({
-          placeId: place.place_id,
-          location: place.geometry.location
-        }));
+
+        let newLocation = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng())
+
+        let request = {
+          location: newLocation,
+          radius: 50000,
+          types: ['establishment'],
+          keyword: ['golf course']
+        };
+
+        let service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
       })
-
-      let request = {
-        location: center,
-        radius: 50000,
-        types: ['establishment'],
-        keyword: ['golf course']
-      };
-
-      let service = new google.maps.places.PlacesService(map);
-      service.nearbySearch(request, callback);
     }
 
     function callback(results, status) {

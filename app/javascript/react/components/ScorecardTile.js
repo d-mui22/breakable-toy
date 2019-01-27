@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ScorecardTile = (props) => {
+
   return(
     <div className='scorecard-form-container'>
       <div className='first-sc-form'>

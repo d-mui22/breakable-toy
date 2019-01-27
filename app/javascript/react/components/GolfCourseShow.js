@@ -32,7 +32,7 @@ class GolfCourseShow extends Component {
         })
       })
       .catch(error => console.error('Error:', error));
-    }
+  }
 
   handleHoleClick(event) {
     if (this.state.click == 0) {
